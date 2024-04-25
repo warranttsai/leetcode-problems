@@ -1,6 +1,13 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": ["es2020", "dom"]
+    "lib": ["ES2020", "DOM"],
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Type Checking */
+    "strict": true /* Enable all strict type-checking options. */,
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */
   }
 }
