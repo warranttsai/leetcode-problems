@@ -46,7 +46,7 @@ function mostPopularCreator(
     }
   }
 
-  // Found the creator with the most viewed video
+  // Found the creators with the most viewed video
   let maxP = 0;
   Object.keys(map).forEach((e) => {
     if (map[e].popularity > maxP) {
