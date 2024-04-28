@@ -3,28 +3,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var constants_1 = require("./constants");
 function checkXMatrix(grid) {
     var isXMatrix = true;
+    // Good Solution
+    // for (let i = 0; i < grid.length; i++) {
+    //   for (let j = 0; j < grid[0].length; j++) {
+    //     if (i == j) {
+    //       if (grid[i][j] === 0) isXMatrix = false;
+    //     } else if (j === grid[0].length - 1 - i) {
+    //       if (grid[i][grid[0].length - 1 - i] === 0) isXMatrix = false;
+    //     } else if (grid[i][j] !== 0) isXMatrix = false;
+    //   }
+    //   if (!isXMatrix) break;
+    // }
+    // Better Solution
     for (var i = 0; i < grid.length; i++) {
         for (var j = 0; j < grid[0].length; j++) {
-            console.log("Checking:", grid[i][j], i, j);
-            if (i == j) {
-                if (grid[i][j] === 0) {
-                    console.log("i === j, not X Matrix", i, j);
-                    isXMatrix = false;
-                }
-            }
-            else if (j === grid[0].length - 1 - i) {
-                if (grid[i][grid[0].length - 1 - i] === 0) {
-                    console.log("j === grid[0].length - 1 - i, not X Matrix", i, grid[0].length - 1 - i);
-                    isXMatrix = false;
-                }
-            }
-            else if (grid[i][j] !== 0) {
-                console.log("Else, not X Matrix", i, j);
-                isXMatrix = false;
-            }
+            var isDiagonal = i == j || j === grid[0].length - 1 - i;
+            isXMatrix = isDiagonal ? grid[i][j] !== 0 : grid[i][j] === 0;
         }
-        if (!isXMatrix)
-            break;
     }
     return isXMatrix;
 }
