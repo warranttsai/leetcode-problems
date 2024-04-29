@@ -18,9 +18,9 @@ Given a 2D integer array grid of size n x n representing a square matrix, return
 
 **Example 2:**
 
-- Input: grid = [[5,7,0],[0,3,1],[0,5,0]]
-- Output: false
-- Explanation: Refer to the diagram above. An X-Matrix should have the green elements (diagonals) be non-zero and the red elements be 0.Thus, grid is not an X-Matrix.
+- **Input:** grid = [[5,7,0],[0,3,1],[0,5,0]]
+- **Output:** false
+- **Explanation:** Refer to the diagram above. An X-Matrix should have the green elements (diagonals) be non-zero and the red elements be 0.Thus, grid is not an X-Matrix.
 
 **Constraints:**
 
