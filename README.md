@@ -1,6 +1,6 @@
 # leetcode-problems
 
-This repository is used to save my codes of Leetcode problems.
+This is where I start my LeetCode journey 👨‍💻🚀🔥
 
 # How to Run Typescript?
 
