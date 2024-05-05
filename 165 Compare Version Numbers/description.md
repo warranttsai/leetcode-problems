@@ -24,7 +24,7 @@ _Return the following_:
 - **Output:** 0
 - **Explanation:** version1 does not specify revision 2, which means it is treated as "0".
 
-**Example ˇ:**
+**Example 3:**
 
 - **Input:** version1 = "0.1", version2 = "1.1"
 - **Output:** -1
