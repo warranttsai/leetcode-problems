@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var constants_1 = require("./constants");
+const constants_1 = require("./constants");
 function maxEnvelopes(envelopes) {
     // Time limite exceeded
     // Sorting the envelopes by area size
@@ -28,10 +28,10 @@ function maxEnvelopes(envelopes) {
     if (envelopes.length === 0)
         return 0;
     function findIndex(dp, target) {
-        var left = 0;
-        var right = dp.length - 1;
+        let left = 0;
+        let right = dp.length - 1;
         while (left <= right) {
-            var mid = Math.floor((left + right) / 2);
+            const mid = Math.floor((left + right) / 2);
             if (dp[mid] < target) {
                 left = mid + 1;
             }
@@ -42,18 +42,17 @@ function maxEnvelopes(envelopes) {
         return left;
     }
     // Sort envelopes by width in ascending order, if widths are equal, sort by height in descending order
-    envelopes.sort(function (a, b) {
+    envelopes.sort((a, b) => {
         if (a[0] === b[0])
             return b[1] - a[1];
         return a[0] - b[0];
     });
-    console.log({ envelopes: envelopes });
-    var dp = [];
-    for (var _i = 0, envelopes_1 = envelopes; _i < envelopes_1.length; _i++) {
-        var _a = envelopes_1[_i], width = _a[0], height = _a[1];
-        console.log({ dp: dp });
-        var index = findIndex(dp, height);
-        console.log({ index: index });
+    console.log({ envelopes });
+    const dp = [];
+    for (const [width, height] of envelopes) {
+        console.log({ dp });
+        const index = findIndex(dp, height);
+        console.log({ index });
         if (index === dp.length)
             dp.push(height);
         else
@@ -61,9 +60,8 @@ function maxEnvelopes(envelopes) {
     }
     return dp.length;
 }
-for (var _i = 0, testCases_1 = constants_1.testCases; _i < testCases_1.length; _i++) {
-    var item = testCases_1[_i];
+for (const item of constants_1.testCases) {
     console.log("Example:", item);
-    var result = maxEnvelopes(item);
+    const result = maxEnvelopes(item);
     console.log(result);
 }

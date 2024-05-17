@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var constants_1 = require("./constants");
-var priority_queue_1 = require("@datastructures-js/priority-queue");
+const constants_1 = require("./constants");
+const priority_queue_1 = require("@datastructures-js/priority-queue");
 // This solution should be correct. However, the time complexity was too high.
 // O(k * n)
 //
@@ -21,27 +21,24 @@ var priority_queue_1 = require("@datastructures-js/priority-queue");
 //   return result;
 // }
 function maxKelements(nums, k) {
-    var pq = new priority_queue_1.MaxPriorityQueue();
+    const maxPQ = new priority_queue_1.MaxPriorityQueue();
     // Push nums items into pq
-    for (var _i = 0, nums_1 = nums; _i < nums_1.length; _i++) {
-        var num = nums_1[_i];
-        pq.enqueue(num);
+    for (const num of nums) {
+        maxPQ.enqueue(num);
     }
-    var result = 0;
-    for (var i = 0; i < k; i++) {
-        console.log(pq.toArray());
-        var val = pq.dequeue();
-        result += val;
-        pq.enqueue(Math.ceil(val / 3));
+    let result = 0;
+    for (let i = 0; i < k; i++) {
+        const maxNum = maxPQ.dequeue();
+        result += maxNum;
+        maxPQ.enqueue(Math.ceil(maxNum / 3));
     }
     return result;
 }
-for (var _i = 0, testCases_1 = constants_1.testCases; _i < testCases_1.length; _i++) {
-    var item = testCases_1[_i];
+for (const item of constants_1.testCases) {
     console.log("Example:", item);
-    var startTime = performance.now();
-    var result = maxKelements(item.nums, item.k);
-    var endTime = performance.now();
-    var executionTime = endTime - startTime;
-    console.log("result: ".concat(result, ", Method execution time: ").concat(executionTime, " milliseconds"));
+    const startTime = performance.now();
+    const result = maxKelements(item.nums, item.k);
+    const endTime = performance.now();
+    const executionTime = endTime - startTime;
+    console.log(`result: ${result}, Method execution time: ${executionTime} milliseconds`);
 }

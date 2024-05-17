@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var constants_1 = require("./constants");
+const constants_1 = require("./constants");
 // Good Solution
 // function containsDuplicate(nums: number[]): boolean {
 //   let result = false;
@@ -14,19 +14,18 @@ var constants_1 = require("./constants");
 // }
 // Better Solution
 function containsDuplicate(nums) {
-    var uniqueNums = new Set(nums);
-    console.log(uniqueNums, nums.length, uniqueNums.size);
+    const uniqueNums = new Set(nums);
     return nums.length > uniqueNums.size;
 }
 console.log("Test Case 1");
 console.log(constants_1.testCases[0]);
-var result1 = containsDuplicate(constants_1.testCases[0]);
+const result1 = containsDuplicate(constants_1.testCases[0]);
 console.log(result1);
 console.log("Test Case 2");
 console.log(constants_1.testCases[1]);
-var result2 = containsDuplicate(constants_1.testCases[1]);
+const result2 = containsDuplicate(constants_1.testCases[1]);
 console.log(result2);
 console.log("Test Case 3");
 console.log(constants_1.testCases[2]);
-var result3 = containsDuplicate(constants_1.testCases[2]);
+const result3 = containsDuplicate(constants_1.testCases[2]);
 console.log(result3);

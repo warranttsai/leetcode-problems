@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var constants_1 = require("./constants");
+const constants_1 = require("./constants");
 /**
  *
  * Key Note:
@@ -22,25 +22,23 @@ var constants_1 = require("./constants");
  * @returns // number
  */
 function sumOfPower(nums) {
-    var mod = 1e9 + 7;
+    const mod = 1e9 + 7;
     // Sorting the array to get larger or smaller number
-    nums.sort(function (a, b) { return a - b; });
-    var result = 0, s = 0;
-    for (var _i = 0, nums_1 = nums; _i < nums_1.length; _i++) {
-        var x = nums_1[_i];
+    nums.sort((a, b) => a - b);
+    let result = 0, s = 0;
+    for (const x of nums) {
         // To prevent integer overflow, we need to use the BigInt() function to handle large numbers
-        var bx = BigInt(x);
+        const bx = BigInt(x);
         // (maxNum * maxNum * (maxNum + s)) % mod
-        var calc = (bx * bx * (bx + BigInt(s))) % BigInt(mod);
+        const calc = (bx * bx * (bx + BigInt(s))) % BigInt(mod);
         result += Number(calc);
         // Iterating the sum of numbers which smaller than current number (x)
         s = (s * 2 + x) % mod;
     }
     return result % mod;
 }
-for (var _i = 0, testCases_1 = constants_1.testCases; _i < testCases_1.length; _i++) {
-    var item = testCases_1[_i];
+for (const item of constants_1.testCases) {
     console.log("Example:", item);
-    var result = sumOfPower(item);
+    const result = sumOfPower(item);
     console.log(result);
 }

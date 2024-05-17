@@ -1,22 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var constants_1 = require("./constants");
+const constants_1 = require("./constants");
 function distanceBetweenBusStops(distance, start, destination) {
-    var newStart = Math.min(start, destination);
-    var newDestination = Math.max(start, destination);
-    var clockwiseResult = 0, counterClockwiseResult = 0;
-    for (var i = 0; i < distance.length; i++) {
+    const newStart = Math.min(start, destination);
+    const newDestination = Math.max(start, destination);
+    let clockwiseResult = 0, counterClockwiseResult = 0;
+    for (let i = 0; i < distance.length; i++) {
         if (i > newStart - 1 && i <= newDestination - 1)
             clockwiseResult += distance[i];
         else
             counterClockwiseResult += distance[i];
     }
-    console.log({ clockwiseResult: clockwiseResult, counterClockwiseResult: counterClockwiseResult });
     return Math.min(clockwiseResult, counterClockwiseResult);
 }
-for (var _i = 0, testCases_1 = constants_1.testCases; _i < testCases_1.length; _i++) {
-    var item = testCases_1[_i];
+for (const item of constants_1.testCases) {
     console.log("Example:", item);
-    var result = distanceBetweenBusStops(item.distance, item.start, item.destination);
+    const result = distanceBetweenBusStops(item.distance, item.start, item.destination);
     console.log(result);
 }

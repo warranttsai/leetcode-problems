@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var constants_1 = require("./constants");
+const constants_1 = require("./constants");
 /**
  * @returns [[string, string]] => [[creator, id]]
  */
 function mostPopularCreator(creators, ids, views) {
-    var map = {};
-    for (var i = 0; i < ids.length; i++) {
+    let map = {};
+    for (let i = 0; i < ids.length; i++) {
         if (map[creators[i]]) {
-            var _a = map[creators[i]], popularity = _a.popularity, maxPopularity = _a.maxPopularity, mostViewed = _a.mostViewed;
+            let { popularity, maxPopularity, mostViewed } = map[creators[i]];
             if (views[i] > maxPopularity) {
                 // New video from the same creator has more views than the current maxPopularity
                 // Update maxPopularity & mostViewed
@@ -23,8 +23,8 @@ function mostPopularCreator(creators, ids, views) {
             // Adding the popularity (amount) with the new video's popularity
             map[creators[i]] = {
                 popularity: popularity + views[i],
-                maxPopularity: maxPopularity,
-                mostViewed: mostViewed,
+                maxPopularity,
+                mostViewed,
             };
         }
         else {
@@ -36,23 +36,22 @@ function mostPopularCreator(creators, ids, views) {
         }
     }
     // Found the creators with the most viewed video
-    var maxP = 0;
-    Object.keys(map).forEach(function (e) {
+    let maxP = 0;
+    Object.keys(map).forEach((e) => {
         if (map[e].popularity > maxP) {
             maxP = map[e].popularity;
         }
     });
-    var result = [];
-    Object.keys(map).forEach(function (e) {
+    const result = [];
+    Object.keys(map).forEach((e) => {
         if (map[e].popularity === maxP) {
             result.push([e, map[e].mostViewed]);
         }
     });
     return result;
 }
-for (var _i = 0, testCases_1 = constants_1.testCases; _i < testCases_1.length; _i++) {
-    var item = testCases_1[_i];
+for (const item of constants_1.testCases) {
     console.log("Example:", item);
-    var result = mostPopularCreator(item.creators, item.ids, item.views);
+    const result = mostPopularCreator(item.creators, item.ids, item.views);
     console.log(result);
 }

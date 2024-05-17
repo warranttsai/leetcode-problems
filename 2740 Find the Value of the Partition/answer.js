@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var constants_1 = require("./constants");
+const constants_1 = require("./constants");
 function findValueOfPartition(nums) {
-    var result = 99999999999;
+    let result = 99999999999;
     /**
      * Solution with Time Limit Exceeded
      */
@@ -13,20 +13,19 @@ function findValueOfPartition(nums) {
     //     result = difference < result ? difference : result;
     //   }
     // }
-    var sortNums = nums.sort(function (a, b) { return a - b; });
-    console.log({ sortNums: sortNums });
-    for (var i = 0; i < sortNums.length - 1; i++) {
-        var difference = Math.abs(sortNums[i] - sortNums[i + 1]);
-        console.log([sortNums[i], sortNums[i + 1], difference, result]);
+    // Sorting by ASC
+    const sortNums = nums.sort((a, b) => a - b);
+    for (let i = 0; i < sortNums.length - 1; i++) {
+        const difference = Math.abs(sortNums[i] - sortNums[i + 1]);
         result = difference < result ? difference : result;
+        // If the difference hit the minimum number, return
         if (result === 0)
             break;
     }
     return result;
 }
-for (var _i = 0, testCases_1 = constants_1.testCases; _i < testCases_1.length; _i++) {
-    var item = testCases_1[_i];
+for (const item of constants_1.testCases) {
     console.log("Example:", item);
-    var result = findValueOfPartition(item);
+    const result = findValueOfPartition(item);
     console.log(result);
 }
